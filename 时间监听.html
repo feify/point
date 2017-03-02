@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- HTML -->
+	<table id="out" border="1" style="cursor: pointer;">
+		<tr>
+			　　<td>table01</td>
+			　　<td>table02</td>
+			　　<td>table03</td>
+			　　<td>table04</td>
+			　　<td>table05</td>
+			　　<td>table06</td>
+			　　<td>table07</td>
+			　　<td>table08</td>
+			　　<td>table09</td>
+			　　<td>table10</td>
+		</tr>
+	</table>
+	<script>
+		var out = document.getElementById("out");
+		if(out.addEventListener){
+			out.addEventListener("click",function(e){
+				var e = e||window.event;
+              //IE没有e.target，有e.srcElement
+              var target = e.target||e.srcElement;
+            //判断事件目标是否是td，是的话target即为目标节点td
+            if(target.tagName.toLowerCase()=="td"){
+            	changeStyle(target);
+            	console.log(target.innerHTML);
+            }
+        },false);
+		}else{
+			out.attachEvent("onclick",function(e){
+				var e = e||window.event;
+            //IE没有e.target，有e.srcElement
+            var target = e.target||e.srcElement;
+            //判断事件目标是否是td，是的话target即为目标节点td
+            console.log(target.innerHTML);
+        })
+		};
+		function changeStyle(ele){
+			ele.innerHTML = "已点击"
+			ele.style.background="#900";
+			ele.style.color = "#fff"; }        
+		</script>
+	</body>
+	</html>
