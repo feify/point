@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.big{
+			width:500px;
+			height:800px;
+			background-color: red;
+		}
+		.small{
+			width:500px;
+			height:312.5px;
+			background-color: blue;
+			position: absolute;
+			top:0;
+			transform:rotate(90deg)  translate(0,20px);
+			-webkit-transform: rotate(90deg)  translate(0,20px);
+                          -webkit-transform-origin:50% 50%;
+		}
+		ul{
+			overflow: hidden;
+		}
+		li{
+			float: left;
+			list-style: none;
+			width:100px;
+			height: 50px;
+			border: 1px solid black;
+			text-align: center;
+			line-height: 50px;
+		}
+		.active{
+			color:#fff;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<!--<div class="big"></div>!-->
+	<!--<div class="small"></div>!-->
+	<ul>
+		<li class="active">
+			1
+		</li>
+		<li>
+			2
+		</li>
+		<li>3
+			
+		</li>
+		<li>4
+			
+		</li>
+	</ul>
+	
+</body>
+	<script type="text/javascript">
+		var ac=0;
+		var list=document.getElementsByTagName('li');
+		//给每个li绑定事件
+		for(var i = 0;i<list.length;i++){
+			(function (n) {
+                list[i].onclick=function(){
+                    ac=n;
+                    for(var r = 0;r<list.length;r++){
+                        list[r].removeAttribute('class','active');
+                    }
+                    list[n].setAttribute('class','active');
+                };
+                list[i].onmouseover=function(){
+                    //鼠标移入
+                    for(var r = 0;r<list.length;r++){
+                        list[r].removeAttribute('class','active');
+                    }
+                    list[n].setAttribute('class','active');
+                };
+                list[i].onmouseout=function(){
+                    //鼠标移出
+                    for(var r = 0;r<list.length;r++){
+                        list[r].removeAttribute('class','active');
+                    }
+                    list[ac].setAttribute('class','active');
+                };
+            })(i)
+		}
+	</script>
+</html>
